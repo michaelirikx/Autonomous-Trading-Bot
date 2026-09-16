@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0.0",
+  "truth_revision": 1,
+  "updated_on": "2026-09-16",
+  "authority": {
+    "canonical_state": "truth/project.json",
+    "accepted_decisions": "truth/decisions.json",
+    "protocol": "truth/README.md",
+    "precedence": [
+      "Accepted owner decisions recorded in truth/decisions.json",
+      "Current canonical state in truth/project.json",
+      "Merged repository code, tests, and documentation",
+      "Evidence-backed handoffs",
+      "Chat messages and model output"
+    ],
+    "conflict_rule": "Stop, report the conflict with evidence, and make no safety-sensitive change until it is resolved."
+  },
+  "project": {
+    "name": "Autonomous Trading Bot",
+    "purpose": "Safety-first autonomous crypto trading bot",
+    "repository": "michaelirikx/Autonomous-Trading-Bot"
+  },
+  "operating_mode": {
+    "live_trading_enabled": false,
+    "live_trading_control": "HARD_DISABLED",
+    "withdrawals_enabled": false,
+    "permitted_environments": [
+      "SHADOW",
+      "PAPER"
+    ],
+    "safety_behavior": "FAIL_CLOSED"
+  },
+  "phase_1": {
+    "status": "LOCKED",
+    "included_agents": [
+      "Chief of Staff",
+      "Data Sentinel",
+      "Setup Scout",
+      "Catalyst Desk",
+      "Macro Pulse",
+      "Execution Engine",
+      "Risk Guard",
+      "Kill Switch",
+      "Security Guard",
+      "Reconciliation Agent"
+    ],
+    "excluded_agents": [
+      "Whale Watch"
+    ]
+  },
+  "canonical_agents": [
+    {
+      "name": "Chief of Staff",
+      "alias": "CoS",
+      "authority": "Coordinates gates and go/no-go decisions; cannot place orders or bypass a safety gate."
+    },
+    {
+      "name": "Data Sentinel",
+      "authority": "Validates data freshness and consistency; stale or conflicting data blocks new risk."
+    },
+    {
+      "name": "Setup Scout",
+      "authority": "Produces setups, levels, and invalidations; cannot place orders."
+    },
+    {
+      "name": "Catalyst Desk",
+      "authority": "Produces event impact and time-window analysis; cannot place orders."
+    },
+    {
+      "name": "Macro Pulse",
+      "authority": "Produces macro context; cannot place orders."
+    },
+    {
+      "name": "Risk Guard",
+      "authority": "Applies risk limits and may block new risk; independent Kill Switch authority remains intact."
+    },
+    {
+      "name": "Kill Switch",
+      "authority": "Independent stop authority; always on and may block or stop execution."
+    },
+    {
+      "name": "Security Guard",
+      "authority": "Always-on security gate; may block execution."
+    },
+    {
+      "name": "Execution Engine",
+      "authority": "Sole component authorized to place orders when the active environment and all gates permit it."
+    },
+    {
+      "name": "Reconciliation Agent",
+      "authority": "Reconciles intended, submitted, filled, and accounted state; cannot create new risk."
+    }
+  ],
+  "global_invariants": [
+    {
+      "id": "INV-001",
+      "rule": "Only the Execution Engine may place orders."
+    },
+    {
+      "id": "INV-002",
+      "rule": "No component may enable live trading while live_trading_control is HARD_DISABLED."
+    },
+    {
+      "id": "INV-003",
+      "rule": "Stale, missing, contradictory, or unverifiable critical data blocks new risk."
+    },
+    {
+      "id": "INV-004",
+      "rule": "Risk Guard, Kill Switch, Security Guard, and Reconciliation Agent cannot be bypassed."
+    },
+    {
+      "id": "INV-005",
+      "rule": "Kill Switch is independent from Risk Guard."
+    },
+    {
+      "id": "INV-006",
+      "rule": "Withdrawals remain disabled."
+    },
+    {
+      "id": "INV-007",
+      "rule": "The observability UI is read-only and cannot bypass backend gates or place orders."
+    },
+    {
+      "id": "INV-008",
+      "rule": "Unknown values remain explicitly UNKNOWN, MISSING, or N/A; metrics may not be fabricated."
+    },
+    {
+      "id": "INV-009",
+      "rule": "An AI-generated claim is not canonical truth until supported by repository evidence or accepted owner decision."
+    }
+  ],
+  "current_change_policy": {
+    "approved_next_step": "POST_OPTIMIZATION_AUDIT",
+    "audit_requires_measured_not_estimated_values": true,
+    "no_major_architecture_change_before_audit": true,
+    "required_audit_areas": [
+      "agent calls",
+      "tokens and context",
+      "cache and state reuse",
+      "deduplication",
+      "early exits",
+      "deterministic replacements",
+      "latency",
+      "parity and quality",
+      "Risk Guard",
+      "Kill Switch",
+      "Security Guard",
+      "Data Sentinel",
+      "Execution Engine",
+      "reconciliation",
+      "difficult market conditions",
+      "usage exhaustion",
+      "safe recovery"
+    ]
+  }
+}
