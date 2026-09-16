@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0.0",
+  "log_policy": "Append-only. Supersede an accepted decision with a new accepted decision; never silently rewrite history.",
+  "decisions": [
+    {
+      "id": "DEC-001",
+      "status": "ACCEPTED",
+      "decided_on": "2026-09-11",
+      "statement": "Phase 1 includes Security Guard.",
+      "source": {
+        "type": "OWNER_INSTRUCTION"
+      }
+    },
+    {
+      "id": "DEC-002",
+      "status": "ACCEPTED",
+      "decided_on": "2026-09-11",
+      "statement": "Whale Watch is excluded from Phase 1.",
+      "source": {
+        "type": "OWNER_INSTRUCTION"
+      }
+    },
+    {
+      "id": "DEC-003",
+      "status": "ACCEPTED",
+      "decided_on": "2026-09-11",
+      "statement": "Reconciliation Agent is the canonical component name.",
+      "source": {
+        "type": "OWNER_INSTRUCTION"
+      }
+    },
+    {
+      "id": "DEC-004",
+      "status": "ACCEPTED",
+      "decided_on": "2026-09-11",
+      "statement": "Execution Engine is the sole order-placing component.",
+      "source": {
+        "type": "OWNER_INSTRUCTION"
+      }
+    },
+    {
+      "id": "DEC-005",
+      "status": "ACCEPTED",
+      "decided_on": "2026-09-11",
+      "statement": "Kill Switch is independent from Risk Guard.",
+      "source": {
+        "type": "OWNER_INSTRUCTION"
+      }
+    },
+    {
+      "id": "DEC-006",
+      "status": "ACCEPTED",
+      "decided_on": "2026-09-11",
+      "statement": "Critical stale or contradictory data blocks trading and the system fails closed.",
+      "source": {
+        "type": "OWNER_INSTRUCTION"
+      }
+    },
+    {
+      "id": "DEC-007",
+      "status": "ACCEPTED",
+      "decided_on": "2026-09-16",
+      "statement": "The next approved step is a measured post-optimization audit; no major architecture change is allowed before that audit.",
+      "source": {
+        "type": "OWNER_INSTRUCTION"
+      }
+    }
+  ]
+}
